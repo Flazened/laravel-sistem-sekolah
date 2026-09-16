@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\SchoolClassController;
+use App\Http\Controllers\MajorController;
+use App\Http\Controllers\SchoolClass\CreateController;
+use App\Http\Controllers\SchoolClass\DestroyController;
+use App\Http\Controllers\SchoolClass\EditController;
+use App\Http\Controllers\SchoolClass\IndexController;
+use App\Http\Controllers\SchoolClass\ShowController;
+use App\Http\Controllers\SchoolClass\StoreController;
+use App\Http\Controllers\SchoolClass\UpdateController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\Teacher\CreateController;
-use App\Http\Controllers\Teacher\DestroyController;
-use App\Http\Controllers\Teacher\EditController;
-use App\Http\Controllers\Teacher\IndexController;
-use App\Http\Controllers\Teacher\ShowController;
-use App\Http\Controllers\Teacher\StoreController;
-use App\Http\Controllers\Teacher\UpdateController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -42,38 +43,71 @@ Route::delete('/{id}',[StudentController::class, 'destroy'])->name('destroy');
 
 });
 
-//Manajamen Data Guru
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//Manajemen Data Siswa(Action)
-Route::name('teachers.')->prefix('teachers')->group(function(){
 
 
-// Halaman Daftar Teacher
-Route::get('/', IndexController::class)->name('index');
+
+
+//Manajemen Data Teacher (Action)
+Route::name('teacher.')->prefix('teacher')->group(function(){
+
+
+// Halaman Dafatar Teacher
+Route::get('/', [TeacherController::class, 'index'])->name('index');
 
 // Halaman Detail Teacher
-Route::get('/{id}', ShowController::class)->name('show');
+Route::get('/{id}',[TeacherController::class, 'show'])->name('show');
 
 //Halaman Tambah Teacher
-Route::get('/create', CreateController::class)->name('create');
+Route::get('/create',[TeacherController::class, 'create'])->name('create');
 
 //Halaman Edit Teacher
-Route::get('/{id}/edit',EditController::class)->name('edit');
+Route::get('/{id}/edit',[TeacherController::class, 'edit'])->name('edit');
 
 //Logika Tambah Teacher
-Route::post('', StoreController::class)->name('store');
+Route::post('',[TeacherController::class, 'store'])->name('store');
 
 //Logika Edit Teacher
-Route::put('/{id}',UpdateController::class)->name('update');
+Route::put('/{id}',[TeacherController::class, 'update'])->name('update');
 
 //Logika Menghapus Teacher
-Route::delete('/{id}',DestroyController::class)->name('destroy');
+Route::delete('/{id}',[TeacherController::class, 'destroy'])->name('destroy');
 
 });
 
 
-// Manajemen Data Kelas (Resource)
-Route::resource('classes', SchoolClassController::class);
+
+
+
+//Manajemen Data SchoolClass (Invokable)
+Route::name('SchoolClass.')->prefix('SchoolClass')->group(function(){
+
+
+// Halaman Daftar SchoolClass
+Route::get('/', IndexController::class )->name('index');
+
+// Halaman Detail SchoolClass
+Route::get('/{id}', ShowController::class)->name('show');
+
+//Halaman Tambah SchoolClass
+Route::get('/create', CreateController::class)->name('create');
+
+//Halaman Edit SchoolClass
+Route::get('/{id}/edit', EditController::class)->name('edit');
+
+//Logika Tambah SchoolClass
+Route::post('', StoreController::class)->name('store');
+
+//Logika Edit SchoolClass
+Route::put('/{id}', UpdateController::class)->name('update');
+
+//Logika Menghapus SchoolClass
+Route::delete('/{id}', DestroyController::class)->name('destroy');
+
+});
+
+
+
+//Manajemen Data Major (Resources)
+Route::resource('Major', MajorController::class);
+
+
