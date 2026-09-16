@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\SchoolClass;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UpdateController extends Controller
+class ShowController extends Controller
 {
     /**
      * Handle the incoming request.
      */
     public function __invoke(Request $request, string $id)
     {
-        return "Mengubah data guru dengan ID:{$id}";
+        return "Menampilkan daftar kelas dengan ID: {$id}";
     }
 }

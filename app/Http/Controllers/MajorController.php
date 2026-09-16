@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SchoolClassController extends Controller
+class MajorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return "ini adalah halaman daftar kelas";
+        return "Ini Adalah Halaman Major";
     }
 
     /**
@@ -19,7 +19,7 @@ class SchoolClassController extends Controller
      */
     public function create()
     {
-        return "Halaman tambah kelas";
+        return "Ini adalah halaman create";
     }
 
     /**
@@ -27,7 +27,7 @@ class SchoolClassController extends Controller
      */
     public function store(Request $request)
     {
-        return "Menambah data kelas";
+        return "Menyimpan data major";
     }
 
     /**
@@ -35,7 +35,7 @@ class SchoolClassController extends Controller
      */
     public function show(string $id)
     {
-        return "Menampilkan data kelas dengan ID: {$id}";
+        return "Menampilkan daftar Major dengan ID: {id}";
     }
 
     /**
@@ -43,7 +43,7 @@ class SchoolClassController extends Controller
      */
     public function edit(string $id)
     {
-        return "Halaman edit data kelas dengan ID: {$id}";
+        return "Halaman Edit Major dengan ID: {$id}";
     }
 
     /**
@@ -51,7 +51,7 @@ class SchoolClassController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "mengubah data kelas dengan ID: {$id}";
+        return "Mengubah data major dengan ID: {$id}";
     }
 
     /**
@@ -59,6 +59,6 @@ class SchoolClassController extends Controller
      */
     public function destroy(string $id)
     {
-        return "Menghapus data kelas dengan ID: {$id}";
+        return "Menghapus data major dengan ID: {$id}";
     }
 }
