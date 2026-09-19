@@ -33,7 +33,7 @@ Route::get('/create',[StudentController::class, 'create'])->name('create');
 Route::get('/{id}/edit',[StudentController::class, 'edit'])->name('edit');
 
 //Logika Tambah Siswa
-Route::post('',[StudentController::class, 'store'])->name('store');
+Route::post('/',[StudentController::class, 'store'])->name('store');
 
 //Logika Edit Siswa
 Route::put('/{id}',[StudentController::class, 'update'])->name('update');
@@ -48,23 +48,23 @@ Route::delete('/{id}',[StudentController::class, 'destroy'])->name('destroy');
 
 
 //Manajemen Data Teacher (Action)
-Route::name('teacher.')->prefix('teacher')->group(function(){
+Route::name('teachers.')->prefix('teachers')->group(function(){
 
 
-// Halaman Dafatar Teacher
+// Halaman Daftar Teacher
 Route::get('/', [TeacherController::class, 'index'])->name('index');
 
 // Halaman Detail Teacher
 Route::get('/{id}',[TeacherController::class, 'show'])->name('show');
 
 //Halaman Tambah Teacher
-Route::get('/create',[TeacherController::class, 'create'])->name('create');
+Route::get('/',[TeacherController::class, 'create'])->name('create');
 
 //Halaman Edit Teacher
 Route::get('/{id}/edit',[TeacherController::class, 'edit'])->name('edit');
 
 //Logika Tambah Teacher
-Route::post('',[TeacherController::class, 'store'])->name('store');
+Route::post('/',[TeacherController::class, 'store'])->name('store');
 
 //Logika Edit Teacher
 Route::put('/{id}',[TeacherController::class, 'update'])->name('update');
@@ -79,7 +79,7 @@ Route::delete('/{id}',[TeacherController::class, 'destroy'])->name('destroy');
 
 
 //Manajemen Data SchoolClass (Invokable)
-Route::name('SchoolClass.')->prefix('SchoolClass')->group(function(){
+Route::name('classes.')->prefix('classes')->group(function(){
 
 
 // Halaman Daftar SchoolClass
@@ -95,7 +95,7 @@ Route::get('/create', CreateController::class)->name('create');
 Route::get('/{id}/edit', EditController::class)->name('edit');
 
 //Logika Tambah SchoolClass
-Route::post('', StoreController::class)->name('store');
+Route::post('/', StoreController::class)->name('store');
 
 //Logika Edit SchoolClass
 Route::put('/{id}', UpdateController::class)->name('update');
@@ -108,6 +108,6 @@ Route::delete('/{id}', DestroyController::class)->name('destroy');
 
 
 //Manajemen Data Major (Resources)
-Route::resource('Major', MajorController::class);
+Route::resource('major', MajorController::class);
 
 
