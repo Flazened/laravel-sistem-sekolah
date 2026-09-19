@@ -9,7 +9,7 @@ class TeacherController extends Controller
 
     public function index()
     {
-        return "ini adalah halaman daftar siswa";
+        return "ini adalah halaman daftar guru";
     }
 
     public function show(string $id) 
