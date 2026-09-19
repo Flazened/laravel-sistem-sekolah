@@ -35,7 +35,7 @@ class MajorController extends Controller
      */
     public function show(string $id)
     {
-        return "Menampilkan daftar Major dengan ID: {id}";
+        return "Menampilkan daftar Major dengan ID: {$id}";
     }
 
     /**
