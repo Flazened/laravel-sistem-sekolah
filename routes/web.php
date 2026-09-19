@@ -23,11 +23,11 @@ Route::name('students.')->prefix('students')->group(function(){
 // Halaman Dafatar Siswa
 Route::get('/', [StudentController::class, 'index'])->name('index');
 
-// Halaman Detail Siswa
-Route::get('/{id}',[StudentController::class, 'show'])->name('show');
-
 //Halaman Tambah Siswa
 Route::get('/create',[StudentController::class, 'create'])->name('create');
+
+// Halaman Detail Siswa
+Route::get('/{id}',[StudentController::class, 'show'])->name('show');
 
 //Halaman Edit Siswa
 Route::get('/{id}/edit',[StudentController::class, 'edit'])->name('edit');
@@ -54,11 +54,11 @@ Route::name('teachers.')->prefix('teachers')->group(function(){
 // Halaman Daftar Teacher
 Route::get('/', [TeacherController::class, 'index'])->name('index');
 
-// Halaman Detail Teacher
-Route::get('/{id}',[TeacherController::class, 'show'])->name('show');
-
 //Halaman Tambah Teacher
 Route::get('/',[TeacherController::class, 'create'])->name('create');
+
+// Halaman Detail Teacher
+Route::get('/{id}',[TeacherController::class, 'show'])->name('show');
 
 //Halaman Edit Teacher
 Route::get('/{id}/edit',[TeacherController::class, 'edit'])->name('edit');
@@ -85,11 +85,11 @@ Route::name('classes.')->prefix('classes')->group(function(){
 // Halaman Daftar SchoolClass
 Route::get('/', IndexController::class )->name('index');
 
-// Halaman Detail SchoolClass
-Route::get('/{id}', ShowController::class)->name('show');
-
 //Halaman Tambah SchoolClass
 Route::get('/create', CreateController::class)->name('create');
+
+// Halaman Detail SchoolClass
+Route::get('/{id}', ShowController::class)->name('show');
 
 //Halaman Edit SchoolClass
 Route::get('/{id}/edit', EditController::class)->name('edit');
