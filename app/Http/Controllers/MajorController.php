@@ -32,7 +32,10 @@ class MajorController extends Controller
                  'description' => 'Program keahlian yang membekali murid dengan kompetensi pemasaran dan pengelolaan bisnis berbasis digital.',
              ],
         ];
-        return "Ini Adalah Halaman Major";
+        return view('majors.index', [
+            'title' => $title,
+            'majors' => $majors
+        ]);
     }
 
     /**
@@ -41,7 +44,9 @@ class MajorController extends Controller
     public function create()
     {
         $title = 'Sistem Sekolah - Buat Jurusan';
-        return "Ini adalah halaman create";
+        return view('majors.create', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -57,7 +62,10 @@ class MajorController extends Controller
      */
     public function show(string $id)
     {
-        return "Menampilkan daftar Major dengan ID: {$id}";
+        $title = 'Sistem Sekolah - Detail Jurusan';
+        return view('majors.show', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -65,7 +73,10 @@ class MajorController extends Controller
      */
     public function edit(string $id)
     {
-        return "Halaman Edit Major dengan ID: {$id}";
+        $title = 'Sistem Sekolah - Edit Jurusan';
+        return view('majors.edit', [
+            'title' => $title
+        ]);
     }
 
     /**

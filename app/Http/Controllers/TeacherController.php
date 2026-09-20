@@ -32,22 +32,34 @@ class TeacherController extends Controller
         ];
 
         
-        return "ini adalah halaman daftar guru";
+        return view('teachers.index', [
+            'title' => $title,
+            'teachers' => $teachers
+        ]);
     }
 
     public function show(string $id) 
     {
-        return "menampilan detail guru dengan: {$id}";
+        $title = 'Sistem Sekolah - Detail Guru';
+        return view('teachers.show', [
+            'title' => $title
+        ]);
     }
 
     public function create()
     {
-        return "Ini adalah halaman tambah guru";
+        $title = 'Sistem Sekolah - Tambah Guru';
+        return view('teachers.create', [
+            'title' => $title
+        ]);
     }
 
     public function edit(string $id)
     {
-        return "Ini adalah halaman edit guru dengan id: {$id}";
+        $title = 'Sistem Sekolah - Edit Guru';
+        return view('teachers.edit', [
+            'title' => $title
+        ]);
     }
 
     public function store()

@@ -117,6 +117,6 @@ Route::delete('/{id}', DestroyController::class)->name('destroy');
 
 
 //Manajemen Data Major (Resources)
-Route::resource('major', MajorController::class);
+Route::resource('majors', MajorController::class);
 
 
