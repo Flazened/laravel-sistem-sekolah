@@ -1,6 +1,6 @@
     {{-- Header Start--}} 
 
-    <header class="bg-[#16213A] text-white"> 
+    <header class="bg-[#01042b] text-white"> 
 
         <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5"> 
 
@@ -24,7 +24,7 @@
 
                 <a href="{{ route('classes.index') }}" class="text-white/55 hover:text-white">Kelas</a> 
 
-                <a href="{{ route('major.index') }}" class="text-white/55 hover:text-white">Jurusan</a> 
+                <a href="{{ route('majors.index') }}" class="text-white/55 hover:text-white">Jurusan</a> 
 
             </nav> 
 

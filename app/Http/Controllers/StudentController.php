@@ -41,7 +41,7 @@ class StudentController extends Controller
     public function create()
     {
         $title = 'Sistem Sekolah - Tambah Siswa';
-        return view("students.create", [
+        return view('students.create', [
             'title' => $title
         ]);
     }

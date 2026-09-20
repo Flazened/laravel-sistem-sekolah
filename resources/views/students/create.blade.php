@@ -82,11 +82,11 @@
 
                     class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Jurusan</label> 
 
-                <select id="major" name="major" 
+                <select id="major" name="major"
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
 
-                    <option value="">Pilih jurusan</option> 
+                    <option value>Pilih jurusan</option> 
 
                     <option value="">AKL</option> 
 
@@ -98,8 +98,6 @@
 
             </div> 
 
-            <input type="text" id="class" name="class" placeholder="Contoh: X AKL 1" 
-  
 
             <div> 
 
