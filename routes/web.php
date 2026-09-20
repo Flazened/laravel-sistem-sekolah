@@ -32,6 +32,9 @@ Route::get('/{id}',[StudentController::class, 'show'])->name('show');
 //Halaman Edit Siswa
 Route::get('/{id}/edit',[StudentController::class, 'edit'])->name('edit');
 
+
+
+
 //Logika Tambah Siswa
 Route::post('/',[StudentController::class, 'store'])->name('store');
 
@@ -55,13 +58,15 @@ Route::name('teachers.')->prefix('teachers')->group(function(){
 Route::get('/', [TeacherController::class, 'index'])->name('index');
 
 //Halaman Tambah Teacher
-Route::get('/',[TeacherController::class, 'create'])->name('create');
+Route::get('/create',[TeacherController::class, 'create'])->name('create');
 
 // Halaman Detail Teacher
 Route::get('/{id}',[TeacherController::class, 'show'])->name('show');
 
 //Halaman Edit Teacher
 Route::get('/{id}/edit',[TeacherController::class, 'edit'])->name('edit');
+
+
 
 //Logika Tambah Teacher
 Route::post('/',[TeacherController::class, 'store'])->name('store');
@@ -93,6 +98,10 @@ Route::get('/{id}', ShowController::class)->name('show');
 
 //Halaman Edit SchoolClass
 Route::get('/{id}/edit', EditController::class)->name('edit');
+
+
+
+
 
 //Logika Tambah SchoolClass
 Route::post('/', StoreController::class)->name('store');
