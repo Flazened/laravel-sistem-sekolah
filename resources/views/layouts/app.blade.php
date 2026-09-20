@@ -27,7 +27,7 @@
   
     {{-- Header Start --}}
 
-    @include('partials.header')    
+    @include('layouts.partials.header')    
 
     {{-- Header End --}}
 
@@ -45,7 +45,7 @@
 
     {{-- Footer Start --}}
 
-    @include('partials.footer')
+    @include('layouts.partials.footer')
 
     {{-- Footer End --}}
 
