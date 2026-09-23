@@ -51,7 +51,8 @@
                 </thead> 
 
                 <tbody> 
-                    @foreach ($classes as $class)
+                    @forelse ($classes as $class)
+                        
                     <tr class="border-b border-[#EFEDE6] hover:bg-[#FAF9F5]"> 
 
                         <td class="px-5 py-4 font-display text-lg text-[#A16207]">
@@ -59,19 +60,19 @@
                         </td> 
 
                         <td class="px-5 py-4 font-mono text-xs text-slate-500">
-                            {{ $class['name'] }}    
+                            {{ $class->name }}    
                         </td> 
 
                         <td class="px-5 py-4 font-medium text-[#16213A]">
-                            {{ $class['grade'] }}    
+                            {{ $class->grade }}    
                         </td> 
 
                         <td class="px-5 py-4">
-                            {{ $class['major'] }}    
+                            {{ $class->major }}    
                         </td> 
 
                         <td class="px-5 py-4">
-                            {{$class['homeroom_teacher']}}    
+                            {{ $class->homeroom_teacher }}    
                         </td> 
 
                         <td class="px-5 py-4"> 
@@ -97,8 +98,11 @@
                         </td> 
 
                     </tr>     
-                    @endforeach
-                    
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center p-4 py-5">Data Kelas Tidak Tersedia</td>
+                        </tr>
+                    @endforelse
 
                 </tbody> 
 

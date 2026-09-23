@@ -61,10 +61,10 @@ Route::get('/', [TeacherController::class, 'index'])->name('index');
 Route::get('/create',[TeacherController::class, 'create'])->name('create');
 
 // Halaman Detail Teacher
-Route::get('/{id}',[TeacherController::class, 'show'])->name('show');
+Route::get('/{teacher}',[TeacherController::class, 'show'])->name('show');
 
 //Halaman Edit Teacher
-Route::get('/{id}/edit',[TeacherController::class, 'edit'])->name('edit');
+Route::get('/{teacher}/edit',[TeacherController::class, 'edit'])->name('edit');
 
 
 
@@ -72,10 +72,10 @@ Route::get('/{id}/edit',[TeacherController::class, 'edit'])->name('edit');
 Route::post('/',[TeacherController::class, 'store'])->name('store');
 
 //Logika Edit Teacher
-Route::put('/{id}',[TeacherController::class, 'update'])->name('update');
+Route::put('/{teacher}',[TeacherController::class, 'update'])->name('update');
 
 //Logika Menghapus Teacher
-Route::delete('/{id}',[TeacherController::class, 'destroy'])->name('destroy');
+Route::delete('/{teacher}',[TeacherController::class, 'destroy'])->name('destroy');
 
 });
 

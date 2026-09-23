@@ -10,7 +10,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $title = "Sistem Sekolah - Dafter Siswa";
+        $title = "Sistem Sekolah - Daftar Siswa";
         $students = Student::select(['id', 'nis', 'name', 'class', 'major'])
         // ->where('name', '=', 'Spotify-Tui') // Mencari 
         ->get();
@@ -55,7 +55,7 @@ class StudentController extends Controller
         $validatedRequest = $request->validate([
             'nis'=>['required', 'string', 'size:4', 'unique:students,nis'],
             'name'=>['required', 'string'],
-            'gender'=>['required', 'string', 'in:Laki-laki,Perempuan'],
+            'gender'=>['required', 'string', 'in:Laki-laki, Perempuan'],
             'major'=>['required', 'string', 'in:AKL,TKJ,BID'],
             'class'=>['required', 'string']
         ]);

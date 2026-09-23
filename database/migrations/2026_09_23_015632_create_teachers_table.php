@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('nip', 18);
+            $table->string('nip', 12);
             $table->string('name');
             $table->string('gender')->comment('Laki-laki/Perempuan');
             $table->string('subject');
-            $table->string('phone');
+            $table->string('phone_number', 12);
             $table->string('status')->comment('aktif/tidak aktif');
             $table->timestamps();
         });
