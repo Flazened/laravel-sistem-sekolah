@@ -55,7 +55,7 @@ class StudentController extends Controller
         $validatedRequest = $request->validate([
             'nis'=>['required', 'string', 'size:4', 'unique:students,nis'],
             'name'=>['required', 'string'],
-            'gender'=>['required', 'string', 'in:Laki-laki, Perempuan'],
+            'gender'=>['required', 'string', 'in:Laki-laki,Perempuan'],
             'major'=>['required', 'string', 'in:AKL,TKJ,BID'],
             'class'=>['required', 'string']
         ]);

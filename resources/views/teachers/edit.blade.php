@@ -28,10 +28,12 @@
 
                     class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">NIP</label> 
 
-                <input type="text" id="nis" name="nis" value="198501012024" 
+                <input type="text" id="nis" name="nis" value="{{ old('teacher', $teacher->nip) }}" 
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
-
+                @error('nip')
+                    <span class="text-red-500 py-2">{{ $message }}</span>
+                @enderror
             </div> 
 
   
@@ -44,10 +46,12 @@
 
                     Lengkap</label> 
 
-                <input type="text" id="name" name="name" value="Budi Ariyanto" 
+                <input type="text" id="name" name="name" value="{{ old('teacher', $teacher->name) }}" 
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
-
+                @error('name')
+                    <span class="text-red-500 py-2">{{ $message }}</span>
+                @enderror
             </div> 
 
   
@@ -63,12 +67,14 @@
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
 
-                    <option value="L" selected>Laki-laki</option> 
+                    <option @selected(old('teacher', $teacher->gender) === 'Laki-laki') value="Laki-laki" >Laki-laki</option> 
 
-                    <option value="P">Perempuan</option> 
+                    <option @selected(old('teacher', $teacher->gender) === 'Perempuan') value="Perempuan">Perempuan</option> 
 
                 </select> 
-
+                @error('gender')
+                    <span class="text-red-500 py-2">{{ $message }}</span>
+                @enderror
             </div> 
 
 
@@ -78,7 +84,7 @@
 
                     class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Mata Pelajaran</label> 
 
-                <input type="text" id="subject" name="subject" value="Akuntasi Dasar" 
+                <input type="text" id="subject" name="subject" value="{{ old('teacher', $teacher->subject) }}" 
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
 
@@ -92,7 +98,7 @@
 
                     class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">No. Telepon</label> 
 
-                <input type="text" id="phone_number" name="phone_number" value="08123456789" 
+                <input type="text" id="phone_number" name="phone_number" value="{{ old('teacher', $teacher->phone_number) }}" 
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
 
@@ -108,9 +114,9 @@
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
 
-                    <option value="aktif" selected>Aktif</option> 
-
-                    <option value="tidak_aktif">Tidak Aktif</option> 
+                    <option @selected(old('teacher', $teacher->status) === 'Aktif') value="Aktif">Aktif</option> 
+ 
+                    <option @selected(old('teacher', $teacher->status) === 'Tidak Aktif') value="Tidak Aktif">Tidak Aktif</option> 
 
                 </select> 
 
