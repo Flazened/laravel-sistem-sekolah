@@ -24,7 +24,8 @@ class TeacherController extends Controller
     {
         $title = 'Sistem Sekolah - Detail Guru';
         return view('teachers.show', [
-            'title' => $title
+            'title' => $title,
+            'teacher'=>$teacher
         ]);
     }
 
@@ -40,7 +41,8 @@ class TeacherController extends Controller
     {
         $title = 'Sistem Sekolah - Edit Guru';
         return view('teachers.edit', [
-            'title' => $title
+            'title' => $title,
+            'teacher'=> $teacher
         ]);
     }
 
@@ -63,14 +65,31 @@ class TeacherController extends Controller
         return redirect()->route('teachers.index');
     }
 
-    public function update(Teacher $teacher)
+    public function update(Teacher $teacher , Request $request)
     {
-        return "Mengubah data guru dengan id: {$teacher}";
+        $validatedRequest = $request->validate([
+            'nip'=>['required', 'string' ,'size:12', 'unique:teacher,nip'],
+            'name'=>['required', 'string'],
+            'gender'=>['required', 'string'],
+            'subject'=>['required', 'string', 'in:Laki-laki,Perempuan'],
+            'phone_number'=>['required', 'string', 'size:12'],
+            'status'=>['required', 'string', 'in:Aktif,Tidak Aktif']
+        ]);
+
+        //Change Data to Database Eliquent
+        Teacher::update($validatedRequest);
+
+        //Handle If Succes
+        return redirect()->route('teachers.index');
     }
 
     public function destroy(Teacher $teacher)
     {
-        return "Menghapus data guru dengan id: {$teacher}";
+        //Delete Data Teacher into databases
+        $teacher->delete();    
+
+        //Handle If Succes
+        return redirect()->route('teachers.index');
     }
 
 }

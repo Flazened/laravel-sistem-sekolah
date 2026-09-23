@@ -90,12 +90,11 @@
 
                                 <a href="{{ route('teachers.edit',['teacher'=> $teacher->id]) }}" class="text-[#16213A] hover:text-[#A16207]">Ubah</a> 
 
-                                <form action="" method="POST" 
+                                <form action="{{ route('teachers.destroy', ['teacher' => $teacher->id]) }}" method="POST" 
 
                                     onsubmit="return confirm('Hapus data Guru ini dari buku induk?')"> 
-
-  
-
+                                    @csrf
+                                    @method('DELETE')
                                     <button type="submit" class="text-red-700 hover:text-red-900">Hapus</button> 
 
                                 </form> 
@@ -109,7 +108,7 @@
                         <tr>
                             <td colspan="7" class="text-center py-5">Data Guru Tidak Tersedia</td>
                         </tr>
-                    @endforelse ($teachers as $teacher)
+                    @endforelse
                     
 
                 </tbody> 

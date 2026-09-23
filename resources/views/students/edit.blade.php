@@ -73,7 +73,7 @@
 
                     <option value="">Pilih Gender</option>
 
-                    <option value="Laki-laki" @selected(old('gender', $student->gender) === 'Laki-laki' ) >Laki-laki</option> 
+                    <option @selected(old('gender', $student->gender) === 'Laki-laki' ) value="Laki-laki" >Laki-laki</option> 
 
                     <option @selected(old('gender', $student->gender) === 'Perempuan' ) value="Perempuan">Perempuan</option> 
 

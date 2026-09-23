@@ -20,13 +20,13 @@
 
                     <p class="mb-1 text-[11px] uppercase tracking-[0.2em] text-[#A16207]">Lembar SISWA</p> 
 
-                    <h1 class="font-display text-3xl font-semibold text-[#16213A]">Budi Ariyanto</h1> 
+                    <h1 class="font-display text-3xl font-semibold text-[#16213A]">{{ $teacher->name }}</h1> 
 
-                    <p class="mt-1 font-mono text-xs text-slate-500">NIP 198501012024</p> 
+                    <p class="mt-1 font-mono text-xs text-slate-500">NIP {{ $teacher->nip }}</p> 
 
                 </div> 
 
-                <a href="{{ route('teachers.edit', ['id' => 1]) }}" 
+                <a href="{{ route('teachers.edit', ['teacher'=>$teacher->id]) }}" 
 
                     class="bg-[#16213A] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]">Ubah</a> 
 
@@ -40,7 +40,7 @@
 
                     <dt class="uppercase tracking-[0.1em] text-xs text-slate-400">NIP</dt> 
 
-                    <dd class="font-medium text-[#16213A]">198501012024</dd> 
+                    <dd class="font-medium text-[#16213A]">{{ $teacher->nip }}</dd> 
 
                 </div> 
 
@@ -48,7 +48,7 @@
 
                     <dt class="uppercase tracking-[0.1em] text-xs text-slate-400">Nama Lengkap</dt> 
 
-                    <dd class="font-medium text-[#16213A]">Budi Ariyanto</dd> 
+                    <dd class="font-medium text-[#16213A]">{{ $teacher->name }}</dd> 
 
                 </div> 
 
@@ -56,7 +56,7 @@
 
                     <dt class="uppercase tracking-[0.1em] text-xs text-slate-400">Jenis Kelamin</dt> 
 
-                    <dd class="font-medium text-[#16213A]">Laki-laki</dd> 
+                    <dd class="font-medium text-[#16213A]">{{ $teacher->gender }}</dd> 
 
                 </div> 
 
@@ -64,7 +64,7 @@
 
                     <dt class="uppercase tracking-[0.1em] text-xs text-slate-400">Mata Pelajaran</dt> 
 
-                    <dd class="font-medium text-[#16213A]">Akuntasi Dasar</dd> 
+                    <dd class="font-medium text-[#16213A]">{{ $teacher->subject }}</dd> 
 
                 </div> 
 
@@ -72,7 +72,7 @@
 
                     <dt class="uppercase tracking-[0.1em] text-xs text-slate-400">No. Telepon</dt> 
 
-                    <dd class="font-medium text-[#16213A]">08123456789</dd> 
+                    <dd class="font-medium text-[#16213A]">{{ $teacher->phone_number }}</dd> 
 
                 </div> 
 
@@ -81,7 +81,7 @@
 
                     <dt class="uppercase tracking-[0.1em] text-xs text-slate-400">Status</dt> 
 
-                    <dd class="font-medium text-[#16213A]">Aktif</dd> 
+                    <dd class="font-medium text-[#16213A]">{{ $teacher->status }}</dd> 
 
                 </div> 
             </dl> 

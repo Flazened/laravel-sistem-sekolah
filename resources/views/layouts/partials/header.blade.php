@@ -8,9 +8,9 @@
 
                 <span> 
 
-                    <span class="font-display block text-lg font-semibold leading-none">Sistem Sekolah</span> 
+                    <span class="font-display block text-lg font-black text-[25px] leading-none">Sistem Sekolah</span> 
 
-                    <span class="text-[11px] uppercase tracking-[0.2em] text-white/50">Buku Induk Siswa</span> 
+                    <span class="text-[11px] uppercase tracking-[0.2em] ml-9 text-white/50">Buku Induk Siswa</span> 
 
                 </span> 
 
