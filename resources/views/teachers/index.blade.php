@@ -53,7 +53,9 @@
                 </thead> 
 
                 <tbody> 
-                    @foreach ($teachers as $teachers)
+                    @forelse ($teachers as $teacher)
+                        
+                    
                     <tr class="border-b border-[#EFEDE6] hover:bg-[#FAF9F5]"> 
 
                         <td class="px-5 py-4 font-display text-lg text-[#A16207]">
@@ -61,32 +63,32 @@
                         </td> 
 
                         <td class="px-5 py-4 font-mono text-xs text-slate-500">
-                            {{ $teachers['nip'] }}    
+                            {{ $teacher->nip }}    
                         </td> 
 
                         <td class="px-5 py-4 font-medium text-[#16213A]">
-                            {{ $teachers['name'] }}    
+                            {{ $teacher->name }}    
                         </td> 
 
                         <td class="px-5 py-4">
-                            {{ $teachers['gender'] }}    
+                            {{ $teacher->gender }}    
                         </td> 
 
                         <td class="px-5 py-4">
-                            {{ $teachers['subject'] }}    
+                            {{ $teacher->subject }}    
                         </td> 
                         
                         <td class="px-5 py-4">
-                            {{ $teachers['status'] }}    
+                            {{ $teacher->status }}    
                         </td>                         
 
                         <td class="px-5 py-4"> 
 
                             <div class="flex justify-end gap-4 text-xs font-medium"> 
 
-                                <a href="{{ route('teachers.show',['id' => 1]) }}" class="text-[#16213A] hover:text-[#A16207]">Lihat</a> 
+                                <a href="{{ route('teachers.show',['teacher'=> $teacher->id]) }}" class="text-[#16213A] hover:text-[#A16207]">Lihat</a> 
 
-                                <a href="{{ route('teachers.edit',['id' => 1]) }}" class="text-[#16213A] hover:text-[#A16207]">Ubah</a> 
+                                <a href="{{ route('teachers.edit',['teacher'=> $teacher->id]) }}" class="text-[#16213A] hover:text-[#A16207]">Ubah</a> 
 
                                 <form action="" method="POST" 
 
@@ -103,7 +105,11 @@
                         </td> 
 
                     </tr>     
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="7" class="text-center py-5">Data Guru Tidak Tersedia</td>
+                        </tr>
+                    @endforelse ($teachers as $teacher)
                     
 
                 </tbody> 

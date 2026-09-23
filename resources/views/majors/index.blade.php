@@ -12,13 +12,13 @@
 
                 <p class="mb-1 text-[11px] uppercase tracking-[0.2em] text-[#A16207]">Tahun Ajaran 2025/2026</p> 
 
-                <h1 class="font-display text-3xl font-semibold text-[#16213A]">Daftar Siswa</h1> 
+                <h1 class="font-display text-3xl font-semibold text-[#16213A]">Daftar Jurusan</h1> 
 
             </div> 
 
             <a href="{{ route('majors.create') }}" class="bg-[#16213A] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]"> 
 
-                Catat Siswa Baru 
+                Catat Jurusan Baru 
 
             </a> 
 
@@ -49,7 +49,7 @@
                 </thead> 
 
                 <tbody> 
-                    @foreach ($majors as $major)
+                    @forelse ($majors as $major)
                     <tr class="border-b border-[#EFEDE6] hover:bg-[#FAF9F5]"> 
 
                         <td class="px-5 py-4 font-display text-lg text-[#A16207]">
@@ -79,7 +79,7 @@
 
                                 <form action="" method="POST" 
 
-                                    onsubmit="return confirm('Hapus data siswa ini dari buku induk?')"> 
+                                    onsubmit="return confirm('Hapus data Jurusan ini dari buku induk?')"> 
 
   
 
@@ -92,7 +92,11 @@
                         </td> 
 
                     </tr>     
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center p-4 py-5">Data Jurusan Tidak Tersedia</td>
+                        </tr>
+                    @endforelse
                     
 
                 </tbody> 

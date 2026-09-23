@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable('nip', 'name','gender', 'subject', 'phone_number', 'status')]
-#[Table('teachers')]
+#[Fillable('code', 'name', 'description')]
+#[Table('majors')]
 
-class Teacher extends Model
+class Major extends Model
 {
     
 }

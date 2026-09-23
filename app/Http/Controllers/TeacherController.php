@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -10,35 +11,16 @@ class TeacherController extends Controller
     public function index()
     {
         $title = 'Sistem Sekolah - Daftar Guru';
-        $teachers = [
-        [
-            'id' => 1,
-            'nip' => '198501012024',
-            'name' => 'Budi Santoso',
-            'gender' => 'Laki-Laki',
-            'subject' => 'Akuntasi Dasar',
-            'phone' => '081234560001',
-            'status' => 'Aktif',
-        ],
-        [
-            'id' => 2,
-            'nip' => '198703152024',
-            'name' => 'Siti Aminah',
-            'gender' => 'Perempuan',
-            'subject' => 'Jaringan Komputer',
-            'phone' => '081234560002',
-            'status' => 'Aktif',
-        ],
-        ];
+        $teachers = Teacher::select(['id','nip', 'name','gender', 'subject', 'phone_number','status'])->get();
 
-        
         return view('teachers.index', [
             'title' => $title,
             'teachers' => $teachers
+            
         ]);
     }
 
-    public function show(string $id) 
+    public function show(Teacher $teacher) 
     {
         $title = 'Sistem Sekolah - Detail Guru';
         return view('teachers.show', [
@@ -54,7 +36,7 @@ class TeacherController extends Controller
         ]);
     }
 
-    public function edit(string $id)
+    public function edit(Teacher $teacher)
     {
         $title = 'Sistem Sekolah - Edit Guru';
         return view('teachers.edit', [
@@ -62,19 +44,33 @@ class TeacherController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return "Menambah data guru baru";
+        $validatedRequest = $request->validate([
+            'nip'=>['required', 'string', 'size:12', 'unique:teachers,nip'],
+            'name'=>['required', 'string'],
+            'gender'=>['required', 'string', 'in:Laki-laki,Perempuan'],
+            'subject'=>['required', 'string'],
+            'phone_number'=>['required', 'string', 'size:12'],
+            'status'=>['required', 'string', 'in:Aktif,Tidak Aktif']
+        ]);
+
+
+        //Add Data to Database eliquent
+        Teacher::create($validatedRequest);
+
+        //Handel If Succes
+        return redirect()->route('teachers.index');
     }
 
-    public function update(string $id)
+    public function update(Teacher $teacher)
     {
-        return "Mengubah data guru dengan id: {$id}";
+        return "Mengubah data guru dengan id: {$teacher}";
     }
 
-    public function destroy(string $id)
+    public function destroy(Teacher $teacher)
     {
-        return "Menghapus data guru dengan id: {$id}";
+        return "Menghapus data guru dengan id: {$teacher}";
     }
 
 }
