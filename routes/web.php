@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\SchoolClass\CreateController;
 use App\Http\Controllers\SchoolClass\DestroyController;
@@ -16,8 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication
+Route::get('/login', [AuthController::class, 'loginView'])->name('login-view')->middleware('guest');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login-post')->middleware('guest');
+Route::get('/register', [AuthController::class, 'registerView'])->name('register-view')->middleware('guest');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register-post')->middleware('guest');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+
 //Manajemen Data Siswa(Action)
-Route::name('students.')->prefix('students')->group(function(){
+Route::name('students.')->middleware('role:student,teacher', 'auth')->prefix('students')->group(function(){
 
 
 // Halaman Dafatar Siswa
@@ -50,8 +60,9 @@ Route::delete('/{student}',[StudentController::class, 'destroy'])->name('destroy
 
 
 
+
 //Manajemen Data Teacher (Action)
-Route::name('teachers.')->prefix('teachers')->group(function(){
+Route::name('teachers.')->middleware('role:teacher', 'auth')->prefix('teachers')->group(function(){
 
 
 // Halaman Daftar Teacher
@@ -83,8 +94,10 @@ Route::delete('/{teacher}',[TeacherController::class, 'destroy'])->name('destroy
 
 
 
+
+
 //Manajemen Data SchoolClass (Invokable)
-Route::name('classes.')->prefix('classes')->group(function(){
+Route::name('classes.')->middleware('role:teacher', 'auth')->prefix('classes')->group(function(){
 
 
 // Halaman Daftar SchoolClass
@@ -116,7 +129,9 @@ Route::delete('/{id}', DestroyController::class)->name('destroy');
 
 
 
+
+
 //Manajemen Data Major (Resources)
-Route::resource('majors', MajorController::class);
+Route::resource('majors', MajorController::class)->middleware('role:teacher', 'auth');
 
 

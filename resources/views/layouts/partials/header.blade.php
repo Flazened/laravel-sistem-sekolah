@@ -27,6 +27,11 @@
                 <a href="{{ route('majors.index') }}" class="text-white/55 hover:text-white">Jurusan</a> 
 
             </nav> 
+            
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="p-2 bg-amber-600 font-semibold rounded-lg ">Logout</button>
+            </form>
 
         </div> 
 
