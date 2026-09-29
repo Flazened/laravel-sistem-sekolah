@@ -10,16 +10,39 @@ use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $title = "Sistem Sekolah - Daftar Siswa";
+        $search = $request->query('search');
+        $class = $request->query('class');
+        $major = $request->query('major');
+
         $students = Student::select(['id', 'nis', 'name', 'class', 'major'])
         // ->where('name', '=', 'Spotify-Tui') // Mencari 
-        ->get();
+        // ->get()
+        ->when($search, function($query, $search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%{$search}%")
+                ->orWhere('nis', 'like', "%{$search}%");
+            });    
+        })
+        //     $query->where('class', '=', '$class');
+        // })
+
+        ->when($class, fn($query, $search) => $query->where('class', '=', $class))
+        ->when($major, fn($query, $search) => $query->where('major', '=', $major))
+        ->paginate(10)
+        ->withQueryString();
+
+        $classes = ['10 AKL', '11 AKL', '12 AKL', '10 TKJ 1', '10 TKJ 2', '11 TKJ 1', '11 TKJ 2','12 TKJ 1', '12 TKJ 2', '10 BiD', '11 BiD', '12 BiD'];
+        $majors = ['AKL', 'BiD', 'TKJ'];
+        
         
         return view('students.index', [
             'title' => $title,
-            'students' => $students
+            'students' => $students,
+            'classes' => $classes,
+            'majors' => $majors
         ]);
     }
 
