@@ -38,6 +38,7 @@ class StudentController extends Controller
         $majors = ['AKL', 'BiD', 'TKJ'];
         
         
+        
         return view('students.index', [
             'title' => $title,
             'students' => $students,
