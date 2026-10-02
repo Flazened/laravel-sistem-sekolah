@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
 
-#[Table('majors')]
+#[Table('classes')]
 #[Fillable('name')]
 
-
-class Major extends Model
+class SchoolClass extends Model
 {
     public function students()
     {
-        return $this->hasMany(Student::class, 'major_id', 'id');
+        return $this->hasMany(Student::class, 'class_id', 'id');
     }
 }

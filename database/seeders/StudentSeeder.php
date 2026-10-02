@@ -21,7 +21,7 @@ class StudentSeeder extends Seeder
         // ];
 
 
-        // Student::upsert($students, ['nis'],['name', 'gender', 'class', 'major']);
+        // Student::upsert($students, ['nis'],['name', 'gender', 'class_id', 'major_id']);
         Student::factory()->count(100)->create();
     }
 }
