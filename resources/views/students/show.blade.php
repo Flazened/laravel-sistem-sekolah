@@ -5,7 +5,7 @@
 @section('content')
 
 
-        <a href="#{{ route('students.index') }}" class="text-xs uppercase tracking-[0.15em] text-slate-400 hover:text-[#A16207]">&larr; Buku 
+        <a href="{{ route('students.index') }}" class="text-xs uppercase tracking-[0.15em] text-slate-400 hover:text-[#A16207]">&larr; Buku 
 
             Induk</a> 
 
@@ -63,7 +63,7 @@
 
                     <dt class="uppercase tracking-[0.1em] text-xs text-slate-400">Jurusan</dt> 
 
-                    <dd class="font-medium text-[#16213A]">{{ $student->major }}</dd> 
+                    <dd class="font-medium text-[#16213A]">{{ $student->major?->name ?? '-' }}</dd> 
 
                 </div> 
 
@@ -71,7 +71,7 @@
 
                     <dt class="uppercase tracking-[0.1em] text-xs text-slate-400">Kelas</dt> 
 
-                    <dd class="font-medium text-[#16213A]">{{ $student->class }}</dd> 
+                    <dd class="font-medium text-[#16213A]">{{ $student->schoolclass?->name ?? '-' }}</dd> 
 
                 </div> 
 

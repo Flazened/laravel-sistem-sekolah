@@ -12,13 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('students', function (Blueprint $table) {
-            if (! Schema::hasColumn('students', 'user_id')) {
-                $table->foreignId('user_id')
-                    ->nullable()
-                    ->unique()
-                    ->after('id')
-                    ->constrained('users');
-            }
+            $table->foreignId('user_id')->nullable()->change();
         });
     }
 
@@ -28,10 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('students', function (Blueprint $table) {
-            if (Schema::hasColumn('students', 'user_id')) {
-                $table->foreignId('user_id');
-                $table->dropColumn('user_id');
-            }
+            $table->foreignId('user_id')->nullable(false)->change();
         });
     }
 };

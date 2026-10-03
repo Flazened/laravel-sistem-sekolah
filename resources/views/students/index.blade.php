@@ -34,8 +34,8 @@
                 <select name="class" id="class"
                     class="border border-[#E5E3DB] px-3 py-2 text-sm focus:border-[#16213A] focus:outline-none">
                     <option value="">Semua Kelas</option>
-                    @foreach ($classes as $class)
-                        <option @selected(request('class') === $class) value="{{ $class }}">{{ $class }}</option>                        
+                    @foreach ($classes as $classItem)
+                        <option @selected(request('class') == $classItem->id) value="{{ $classItem->id }}">{{ $classItem->name }}</option>                        
                     @endforeach
                 </select>
             </div>
@@ -45,8 +45,8 @@
                 <select name="major" id="major"
                     class="border border-[#E5E3DB] px-3 py-2 text-sm focus:border-[#16213A] focus:outline-none">
                     <option value="">Semua Jurusan</option>
-                    @foreach ($majors as $major)
-                        <option @selected(request('major') === $major) value="{{ $major }}">{{ $major }}</option>                        
+                    @foreach ($majors as $majorItem)
+                        <option @selected(request('major') == $majorItem->id) value="{{ $majorItem->id }}">{{ $majorItem->name }}</option>                        
                     @endforeach
                 </select>
             </div>
@@ -98,11 +98,11 @@
                         </td> 
 
                         <td class="px-5 py-4">
-                            {{ $student->class }}    
+                            {{ $student->schoolclass?->name ?? '-' }}    
                         </td> 
 
                         <td class="px-5 py-4">
-                            {{$student->major}}    
+                            {{ $student->major?->name ?? '-' }}    
                         </td> 
 
                         <td class="px-5 py-4"> 

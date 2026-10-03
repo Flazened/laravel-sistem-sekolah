@@ -4,7 +4,6 @@ namespace App\Http\Requests\Student;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Override;
 
 class StoreRequest extends FormRequest
 {
@@ -24,17 +23,16 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nis'=>['required', 'string', 'size:4', 'unique:students,nis'],
-            'name'=>['required', 'string'],
-            'gender'=>['required', 'string', 'in:Laki-laki,Perempuan'],
-            'major'=>['required', 'string', 'in:AKL,TKJ,BID'],
-            'class'=>['required', 'string']
+            'nis' => ['required', 'string', 'size:4', 'unique:students,nis'],
+            'name' => ['required', 'string'],
+            'gender' => ['required', 'string', 'in:Laki-laki,Perempuan'],
+            'major_id' => ['required', 'exists:majors,id'],
+            'class_id' => ['required', 'exists:classes,id'],
         ];
     }
 
-
     // Yang berubah hanya nama saja
-    // public function attributes() 
+    // public function attributes()
     // {
     //     return [
     //         'nis' => 'Nomor Induk Siswa',
@@ -45,14 +43,13 @@ class StoreRequest extends FormRequest
     //     ];
     // }
 
-    
-    //mengatur pesan secara keseluruhan
+    // mengatur pesan secara keseluruhan
     // public function messages()
     // {
     //     return [
     //         'nis.required' => 'Nomor Induk Siswa wajib diisi',
     //         'nis.size' => 'Nomor Induk Siswa harus terdiri dari 4 angka'
     //     ];
-        
+
     // }
 }
