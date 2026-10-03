@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    use HasFactory;    
-    
+    use HasFactory;
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -26,8 +26,9 @@ class Student extends Model
 
     public function schoolclass()
     {
-        return $this->belongsTo(SchoolClass::class, 'classes_id', 'id');
+        return $this->belongsTo(SchoolClass::class, 'class_id', 'id');
     }
+
     public function subjects()
     {
         return $this->belongsToMany(

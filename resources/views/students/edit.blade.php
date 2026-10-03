@@ -85,38 +85,46 @@
 
             <div> 
 
-                <label for="major" 
+                <label for="major_id" 
 
                     class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Jurusan</label> 
 
-                <select id="major" name="major" 
+                <select id="major_id" name="major_id" 
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
 
                     <option value="">Pilih Jurusan</option>
 
-                    <option value="AKL" @selected(old('major', $student->major) === 'AKL') >AKL</option> 
-
-                    <option value="TKJ" @selected(old('major', $student->major) === 'TKJ' ) >TKJ</option> 
-
-                    <option value="BID" @selected(old('major', $student->major) === 'BID') >BiD</option> 
+                    @foreach ($majors as $major)
+                        <option value="{{ $major->id }}" @selected(old('major_id', $student->major_id) == $major->id)>{{ $major->name }}</option>
+                    @endforeach
 
                 </select> 
-
+                @error('major_id')
+                    <span class="text-red-500 py-2">{{ $message }}</span>
+                @enderror
             </div> 
 
   
 
             <div> 
 
-                <label for="class" 
+                <label for="class_id" 
 
                     class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Kelas</label> 
 
-                <input type="text" id="class" name="class" value="{{ $student->class }}" 
+                <select id="class_id" name="class_id" 
 
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none"> 
-                @error('class')
+
+                    <option value="">Pilih Kelas</option>
+
+                    @foreach ($classes as $class)
+                        <option value="{{ $class->id }}" @selected(old('class_id', $student->class_id) == $class->id)>{{ $class->name }}</option>
+                    @endforeach
+
+                </select> 
+                @error('class_id')
                     <span class="text-red-500 py-2">{{ $message }}</span>
                 @enderror
             </div> 
