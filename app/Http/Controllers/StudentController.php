@@ -93,6 +93,11 @@ class StudentController extends Controller
         // $student->class =  $request->class;
         // $student->save();
 
+        // Hubungkan user_id jika user yang login adalah student dan belum memiliki data siswa
+        if (auth()->check() && auth()->user()->role === 'student' && ! auth()->user()->student) {
+            $validatedRequest['user_id'] = auth()->id();
+        }
+
         // Tambahkan Data Ke Database Eloquent
         Student::create($validatedRequest);
 
